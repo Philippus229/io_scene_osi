@@ -9,7 +9,7 @@ import os.path
 class ImportOperator(bpy.types.Operator, bpy_extras.io_utils.ImportHelper):
     """Load an SMO stage file"""
     bl_idname = "import_scene.osi"
-    bl_label = "Import SMO Stage XML"
+    bl_label = "Import Stage"
     bl_options = {'UNDO'}
 
     filename_ext = ".xml"
