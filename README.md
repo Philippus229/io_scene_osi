@@ -9,5 +9,5 @@ A Blender add-on that can import Super Mario Odyssey stages/levels
 
 ## Using the add-on
 1. Open Blender, import the add-on, set the "RomFS" path to a valid SMO RomFS path and set the "Models" path to the "Models" folder of Odyssey Editor.
-2. To import a stage, go to "File"->"Import"->"SMO Stage (.xml)", select a stage XML, set the value of "Scenario" to the scenario you want to load (0-14) and import the stage by clicking on "Import SMO Stage XML".
+2. To import a stage, go to "File"->"Import"->"SMO Stage (.xml)", select a stage XML, set the value of "Scenario" to the scenario you want to load (0-14) and import the stage by clicking on "Import Stage".
 Note: When the option "Only Main Ground" is checked, only the main ground models will be imported. This option is still in development and only works for some stages.
