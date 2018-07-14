@@ -30,7 +30,7 @@ class osiAddonPreferences(bpy.types.AddonPreferences):
     bl_idname = __package__
 
     # General
-    game_path = bpy.props.StringProperty(name="RomFS", description="Path to the folder holding game content.", subtype='DIR_PATH')
+    game_path = bpy.props.StringProperty(name="RomFS", description="Path to the Super Mario Odyssey RomFS.", subtype='DIR_PATH')
     objs_path = bpy.props.StringProperty(name="Models", description=" Path to the Odyssey Editor Models folder.", subtype='DIR_PATH')
     
     def draw(self, context):
