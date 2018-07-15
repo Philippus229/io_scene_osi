@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Super Mario Odyssey Stage Importer",
     "description": "Import Super Mario Odyssey Stages",
-    "author": "Philippus229, bymlv2 (v1.0.3) by leoetlino, SARCExtract (v0.5) by aboood40091",
+    "author": "Philippus229, bymlv2 (v1.0.3) by leoetlino, SARCExtract (v0.5) by aboood40091, Sorted Containers (v2.0.4), PyYAML (v3.10)",
     "version": (0, 2, 0),
     "blender": (2, 79, 0),
     "location": "File > Import-Export",
