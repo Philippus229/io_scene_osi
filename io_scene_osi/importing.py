@@ -42,10 +42,10 @@ class Importer:
         addon.groundonly = self.onlyground
         if self.filepath[len(self.filepath) - 3] == 's' and self.filepath[len(self.filepath) - 2] == 'z' and self.filepath[len(self.filepath) - 1] == 's':
             sarcextract_path = os.path.dirname(os.path.realpath(__file__)) + "/SARCExtract/SARCExtract.exe"
-            p = subprocess.Popen([sarcextract_path, self.filepath], stdout=subprocess.PIPE)
+            p = subprocess.Popen([sarcextract_path, self.filepath])
+            waiting = p.wait()
             self.filepath = self.filepath[:-4]
             addon.stageFile = self.filepath + "/" + ntpath.basename(self.filepath) + ".byml"
-
-        time.sleep(5)
+        
         exec(addon.osiAddonPreferences.run(addon.osiAddonPreferences))
         return {'FINISHED'}
