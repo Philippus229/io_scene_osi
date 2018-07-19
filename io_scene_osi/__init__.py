@@ -1,8 +1,8 @@
 bl_info = {
     "name": "Super Mario Odyssey Stage Importer",
     "description": "Import Super Mario Odyssey Stages",
-    "author": "Philippus229, bymlv2 (v1.0.3) by leoetlino, SARCExtract (v0.5) by aboood40091, Sorted Containers (v2.0.4), PyYAML (v3.10)",
-    "version": (0, 2, 0),
+    "author": "Philippus229, bymlv2 (v1.0.3) by leoetlino, SARCExtract (v0.5) by aboood40091, Sorted Containers (v2.0.4), PyYAML (v3.10), libraries from Odyssey Editor (by exelix11)",
+    "version": (0, 3, 0),
     "blender": (2, 79, 0),
     "location": "File > Import-Export",
     "warning": "This add-on is under development.",
@@ -22,12 +22,15 @@ if "bpy" in locals():
         importlib.reload(byml)
     if "sortedcontainers" in locals():
         importlib.reload(sortedcontainers)
+    if "converting" in locals():
+        importlib.reload(converting)
 
 import bpy
 from . import addon
 from . import importing
 from . import byml
 from . import sortedcontainers
+from . import converting
 
 def register():
     bpy.utils.register_module(__name__)

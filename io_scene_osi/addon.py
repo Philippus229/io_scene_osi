@@ -6,6 +6,7 @@ import os
 from mathutils import Euler
 import os.path
 from . import byml
+from . import converting
 
 # ---- Globals ----
 
@@ -31,7 +32,6 @@ class osiAddonPreferences(bpy.types.AddonPreferences):
 
     # General
     game_path = bpy.props.StringProperty(name="RomFS", description="Path to the folder holding game content.", subtype='DIR_PATH')
-    objs_path = bpy.props.StringProperty(name="Models", description=" Path to the Odyssey Editor Models folder.", subtype='DIR_PATH')
     
     def draw(self, context):
         box = self.layout.box()
@@ -44,25 +44,16 @@ class osiAddonPreferences(bpy.types.AddonPreferences):
         else:
             box.label("The RomFS path is valid!", icon='FILE_TICK')
         
-        box.prop(self, "objs_path")
-        if not self.game_path:
-            box.label("Please set a Models directory path.", icon='ERROR')
-        elif not os.path.isdir(os.path.join(self.objs_path, "GameTextures")):
-            box.label("Invalid Models directory. It does not have an GameTextures subfolder.", icon='ERROR')
-        else:
-            box.label("The Models path is valid!", icon='FILE_TICK')
-
     def run(self):
-        objspath = bpy.context.user_preferences.addons[__package__].preferences.objs_path
+        romfspath = bpy.context.user_preferences.addons[__package__].preferences.game_path
         f = open(stageFile, "rb")
         data = f.read()
         root = byml.Byml(data).parse()
-        scenario = 0;
-        i = 0
         a = root[scenario]
         for b in a['ObjectList']:
             if 0 < 1:
                 objPath = ""
+                szsPath = ""
                 objName = ''
                 stageName = ''
                 resourcePath = ''
@@ -101,8 +92,8 @@ class osiAddonPreferences(bpy.types.AddonPreferences):
                 someString = ''
                 someString2 = ''
                 if unitConfigName != '':
-                    unitConfigName2 = unitConfigName + '.obj'
-                    objPath = objspath + "/" + str(unitConfigName2)
+                    szsPath = romfspath + "/ObjectData/" + unitConfigName + ".szs"
+                    objPath = romfspath + "/ObjectData/" + unitConfigName + "/" + unitConfigName + "/" + unitConfigName + ".obj"
                     someString = unitConfigName[len(unitConfigName) - 6]
                     someString += unitConfigName[len(unitConfigName) - 5]
                     someString += unitConfigName[len(unitConfigName) - 4]
@@ -110,15 +101,19 @@ class osiAddonPreferences(bpy.types.AddonPreferences):
                     someString2 += unitConfigName[2]
                     someString2 += unitConfigName[3]
                 else:
-                    objName2 = objName + '.obj'
-                    objPath = objspath + "/" + str(objName2)
+                    szsPath = romfspath + "/ObjectData/" + objName + ".szs"
+                    objPath = romfspath + "/ObjectData/" + objName + "/" + objName + "/" + objName + ".obj"
                     someString = objName[len(objName) - 6]
                     someString += objName[len(objName) - 5]
                     someString += objName[len(objName) - 4]
                     someString2 = objName[1]
                     someString2 += objName[2]
                     someString2 += objName[3]
-                                
+
+                if not os.path.isfile(objPath):
+                    if os.path.isfile(szsPath):
+                        something = converting.convert(szsPath, objPath)
+                
                 if groundonly == False:
                     someString = 'Gro'
                             
