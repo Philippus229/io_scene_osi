@@ -1,5 +1,5 @@
 # io_scene_osi (Odyssey Stage Importer)
-A Blender add-on that can import Super Mario Odyssey stages.
+A Blender add-on for importing Super Mario Odyssey stages.
 
 ## Usage
 1. Install the add-on if you haven't already and set "Models" path to the path of the Odyssey Editor "Models" directory.
