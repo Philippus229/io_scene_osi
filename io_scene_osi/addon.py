@@ -109,7 +109,7 @@ class osiAddonPreferences(bpy.types.AddonPreferences):
             if groundonly == False:
                 someString = 'Gro'
             
-            if someString == 'Gro' or someString == 'und' or someString2 == 'Key' or someString == 'ing' or someString == 'ild' or someString == 'own' or someString == 'ava' or someString == 'Pan' or someString == 'ceL' or (someString == 'tep' and someString2 == 'Lav'):
+            if someString in ['Gro','und','ing','ild','own','ava','Pan','ceL'] or someString2 == 'Key' or (someString == 'tep' and someString2 == 'Lav'):
                 if os.path.isfile(objPath):
                     imported_object = bpy.ops.import_scene.obj(filepath=objPath)
                     obj_object = bpy.context.selected_objects[0]
