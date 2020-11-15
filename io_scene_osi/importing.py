@@ -3,7 +3,6 @@ import bpy_extras
 import os
 from . import addon
 from mathutils import Euler
-import os.path
 import subprocess
 import ntpath
 import time
@@ -47,5 +46,5 @@ class Importer:
             self.filepath = self.filepath[:-4]
             addon.stageFile = self.filepath + "/" + ntpath.basename(self.filepath) + ".byml"
         
-        exec(addon.osiAddonPreferences.run(addon.osiAddonPreferences))
+        addon.osiAddonPreferences.run(addon.osiAddonPreferences)
         return {'FINISHED'}
